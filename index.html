@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SVG Prep Studio</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Ctext y='8.5' font-size='9'%3E%F0%9F%A7%A9%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header><h1>SVG Prep Studio</h1><p>Siapkan SVG untuk microstock: stroke jadi shape, artboard sesuai platform, metadata lengkap.</p></header>
+<nav class="tabs" id="tabs"><button class="tab" data-p="canva">Canva</button><button class="tab on" data-p="adobe">Adobe Stock</button></nav>
+<main>
+<section>
+  <div class="card"><h2 id="ptitle">Ketentuan</h2><ul class="tips" id="tips"></ul></div>
+  <div class="card" style="margin-top:12px"><h2>1. Upload SVG</h2>
+    <div id="drop">Ketuk / seret file <b>.svg</b> ke sini<div class="hint" id="fname">Belum ada file</div></div>
+    <input type="file" id="file" accept=".svg,image/svg+xml" hidden>
+    <div class="msg err" id="err"></div>
+    <label>Ukuran artboard (px)</label>
+    <div class="row"><input type="number" id="ab" style="width:110px"><span class="hint" id="abhint"></span></div>
+    <div class="row" id="presets" style="margin-top:6px"></div>
+    <label>Padding ikon dalam artboard (%)</label>
+    <input type="number" id="pad" value="8" min="0" max="40">
+  </div>
+  <div class="card" style="margin-top:12px"><h2>2. Metadata</h2>
+    <label>Judul</label><input type="text" id="title" placeholder="mis. Shopping cart line icon">
+    <label>Creator / pembuat</label><input type="text" id="creator" value="Ari Fitriansyah">
+    <label>Tanggal dibuat (otomatis saat upload)</label><input type="text" id="date" readonly>
+    <label>Pemegang hak cipta</label><input type="text" id="holder" value="Ari Fitriansyah">
+    <label>Lisensi</label>
+    <select id="lic"><option>All rights reserved</option><option>Royalty-free stock license</option><option>CC BY 4.0</option><option>CC0 1.0 Public Domain</option></select>
+    <label>Keyword / subjek <span id="kwcount"></span></label>
+    <textarea id="kw" placeholder="pisahkan dengan koma"></textarea>
+    <div class="row" style="margin-top:6px"><button class="btn" id="kwai">✨ Keyword AI</button><button class="btn" id="kwloc">Keyword otomatis (lokal)</button></div>
+    <div class="msg" id="aistat"></div>
+  </div>
+  <div class="card" style="margin-top:12px"><h2>3. Warna ikon</h2>
+    <div class="row"><input type="color" id="mono" value="#222222"><button class="btn" id="monob" disabled>Satu warna untuk semua</button></div>
+    <label>Atau ubah per warna</label><div class="row" id="cols"><span class="hint">Upload file dulu.</span></div>
+  </div>
+</section>
+<section>
+  <div class="card"><h2>Preview <span class="hint" id="pinfo"></span></h2>
+    <div class="prev" id="prev"><span>Preview muncul setelah SVG diupload</span></div>
+    <div class="row" style="margin-top:12px;justify-content:center"><button class="btn pri" id="dl" disabled>⬇ Unduh SVG</button><button class="btn" id="dljpg" disabled hidden>⬇ Preview JPG (Canva)</button></div>
+    <div class="msg" id="dlmsg" style="text-align:center"></div>
+  </div>
+  <div class="card" style="margin-top:12px"><h2>Checklist sebelum upload</h2><ul class="ck" id="chk"><li><span class="i n">•</span>Menunggu file…</li></ul></div>
+</section>
+</main>
+<div class="stage" id="stage" aria-hidden="true"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.17/paper-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipper-lib/6.4.2/clipper.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
